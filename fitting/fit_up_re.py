@@ -55,7 +55,6 @@ def main():
     m = load_model(join(SMPL_PATH, 'models/basicModel_neutral_lbs_10_207_0_v1.0.0.pkl'))
     # Init upright t-pose
     initial_model = m.copy()
-    embed()
     initial_model.pose[0:3] = np.array((np.pi, 0, 0))
     # =========>
 

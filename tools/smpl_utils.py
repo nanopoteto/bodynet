@@ -5,16 +5,16 @@ import os
 import scipy
 import sys
 from time import time
-
+from IPython import embed
 import rotations
 
 # SMPLify (http://smplify.is.tue.mpg.de/)
 curr_dir = os.path.dirname(os.path.abspath(__file__))
 SMPLIFY_PATH = os.getenv('SMPLIFY_PATH', os.path.join(curr_dir, 'smplify_public/code/'))
 sys.path.append(SMPLIFY_PATH)
+
 from lib.max_mixture_prior import MaxMixtureCompletePrior
 from lib.robustifiers import GMOf
-
 
 def optimize_on_joints3D(model,
                          joints3D,
@@ -224,7 +224,8 @@ def optimize_on_vertices(model,
         [my_exp(model.pose[55]),
          my_exp(-model.pose[58]),
          my_exp(-model.pose[12]),
-         my_exp(-model.pose[15])])
+         my_exp(-model.pose[15])]
+         )
     # Visualization at optimization step
     if viz:
         def on_step(_):
